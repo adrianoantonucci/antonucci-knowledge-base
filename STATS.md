@@ -1,3 +1,3 @@
 # Estatísticas
 
-- knowledge: 1 arquivos
+- knowledge: 2 arquivos
