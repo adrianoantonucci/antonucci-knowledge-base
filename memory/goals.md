@@ -21,4 +21,3 @@
 
 - Aprender IA aplicada à engenharia
 - Construir agentes especializados
-

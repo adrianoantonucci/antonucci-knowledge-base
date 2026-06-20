@@ -5,6 +5,7 @@ ROOTS = [
     "playbooks",
     "knowledge",
     "templates",
+    "memory",
 ]
 
 for root in ROOTS:
