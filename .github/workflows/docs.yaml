@@ -12,12 +12,20 @@ jobs:
     permissions:
       contents: write
 
+    outputs:
+      skills_changed: ${{ steps.skills-diff.outputs.changed }}
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: Validate Skills
+        run: python scripts/sync_marketplace.py --check
 
       - name: Generate Indexes
         run: python scripts/generate-index.py
@@ -29,3 +37,54 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "docs: atualiza arquivos gerados"
+
+      - name: Check if skills changed in this push
+        id: skills-diff
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          # github.event.before é 0000...0 em pushes que criam uma branch nova;
+          # nesse caso, trata como "mudou" para garantir que a primeira publicação aconteça.
+          if [ -z "${BEFORE_SHA}" ] || [ "${BEFORE_SHA}" = "0000000000000000000000000000000000000000" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "${BEFORE_SHA}" HEAD -- skills/ | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  release-skills:
+    needs: docs
+    if: needs.docs.outputs.skills_changed == 'true'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Package Skills
+        run: python scripts/package_skills.py --output dist
+
+      - name: Generate Release Tag
+        id: tag
+        run: echo "tag=skills-$(date +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
+
+      - name: Publish Release with Skill Zips
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: "Skills ${{ steps.tag.outputs.tag }}"
+          body: |
+            Pacotes `.zip` gerados automaticamente a partir de `skills/`.
+
+            - Claude Code / Cowork: já sincronizam via plugin marketplace (`/plugin marketplace update`), não precisam destes arquivos.
+            - claude.ai (web/mobile): baixe o `.zip` da skill desejada e suba manualmente em Settings > Capabilities > Skills.
+          files: dist/*.zip

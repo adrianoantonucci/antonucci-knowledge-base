@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "antonucci-knowledge-base",
+  "version": "1.0.0",
+  "description": "Skills pessoais de Adriano Antonucci para DevOps, liderança técnica e criação de conteúdo, sincronizadas a partir deste repositório.",
+  "owner": {
+    "name": "Adriano Antonucci"
+  },
+  "plugins": [
+    {
+      "name": "antonucci-skills",
+      "description": "Skills pessoais: linkedin-writer, staff-engineer-advisor.",
+      "source": "./",
+      "strict": false,
+      "category": "productivity",
+      "skills": [
+        "skills/linkedin-writer",
+        "skills/staff-engineer-advisor"
+      ]
+    }
+  ]
+}

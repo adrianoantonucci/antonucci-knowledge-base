@@ -1,4 +1,4 @@
 # Índice - skills
 
-- content/linkedin-writer.md
-- leadership/staff-engineer-advisor.md
+- linkedin-writer/SKILL.md
+- staff-engineer-advisor/SKILL.md

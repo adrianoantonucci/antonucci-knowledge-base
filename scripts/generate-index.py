@@ -20,7 +20,7 @@ for root in ROOTS:
     ]
 
     for file in sorted(path.rglob("*.md")):
-        if file.name == "INDEX.md":
+        if file.name in ("INDEX.md", "README.md"):
             continue
 
         index.append(f"- {file.relative_to(path)}")

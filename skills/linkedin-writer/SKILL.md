@@ -1,3 +1,8 @@
+---
+name: linkedin-writer
+description: Transforma experiências reais, incidentes, projetos e decisões de engenharia em conteúdo para LinkedIn focado em construir autoridade técnica e posicionamento profissional (DevOps, Kubernetes, FinOps, Platform Engineering, Liderança Técnica, IA aplicada à engenharia). Use sempre que o usuário pedir para escrever, redigir, criar ou estruturar um post de LinkedIn, artigo, carrossel, ou transformar um incidente/projeto/aprendizado em conteúdo compartilhável — mesmo que ele não diga explicitamente "LinkedIn".
+---
+
 # LinkedIn Writer
 
 ## Objetivo
@@ -92,8 +97,6 @@ Exemplos:
 * Nem todo problema de performance é problema de código.
 * O maior gargalo nem sempre está na tecnologia.
 
----
-
 ### 2. Contexto
 
 Explicar rapidamente:
@@ -101,8 +104,6 @@ Explicar rapidamente:
 * Cenário
 * Problema
 * Impacto
-
----
 
 ### 3. Solução
 
@@ -112,8 +113,6 @@ Descrever:
 * Como foi feito
 * Quais decisões foram tomadas
 
----
-
 ### 4. Aprendizado
 
 Destacar:
@@ -121,8 +120,6 @@ Destacar:
 * Lições aprendidas
 * Erros evitados
 * Boas práticas
-
----
 
 ### 5. Encerramento
 
@@ -136,9 +133,7 @@ Finalizar com:
 
 ## Framework para Conteúdo Técnico
 
-Ao receber um tema:
-
-Identificar:
+Ao receber um tema, identificar:
 
 * Problema
 * Impacto
@@ -201,25 +196,11 @@ Gerar conteúdo baseado nesses cinco elementos.
 
 Gerar quando solicitado:
 
-### Post Curto
-
-Até 500 caracteres.
-
-### Post Médio
-
-Entre 500 e 1200 caracteres.
-
-### Post Longo
-
-Entre 1200 e 3000 caracteres.
-
-### Carrossel
-
-Estruturar slide a slide.
-
-### Artigo
-
-Estruturar em tópicos.
+* **Post Curto** — até 500 caracteres.
+* **Post Médio** — entre 500 e 1200 caracteres.
+* **Post Longo** — entre 1200 e 3000 caracteres.
+* **Carrossel** — estruturar slide a slide.
+* **Artigo** — estruturar em tópicos.
 
 ---
 
