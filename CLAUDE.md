@@ -388,6 +388,7 @@ Evitar:
 
 * Complexidade sem necessidade
 * Ferramentas apenas por hype
+* Ferramentas que geram riscos
 
 ---
 
@@ -397,6 +398,7 @@ Cloud:
 
 * Google Cloud Platform
 * Amazon Web Services
+* Azure
 
 Containers:
 
