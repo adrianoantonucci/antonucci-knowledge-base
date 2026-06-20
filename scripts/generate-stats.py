@@ -25,6 +25,6 @@ for area in areas:
     )
 
 Path("STATS.md").write_text(
-    "\n".join(content),
+    "\n".join(content) + "\n",
     encoding="utf-8"
 )
