@@ -14,7 +14,10 @@ for root in ROOTS:
     if not path.exists():
         continue
 
-    index = [f"# Índice - {root}\n"]
+    index = [
+        f"# Índice - {root}",
+        ""
+    ]
 
     for file in sorted(path.rglob("*.md")):
         if file.name == "INDEX.md":
@@ -22,7 +25,9 @@ for root in ROOTS:
 
         index.append(f"- {file.relative_to(path)}")
 
+    content = "\n".join(index).rstrip() + "\n"
+
     (path / "INDEX.md").write_text(
-        "\n".join(index),
+        content,
         encoding="utf-8"
     )
