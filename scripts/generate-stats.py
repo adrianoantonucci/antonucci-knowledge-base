@@ -6,10 +6,12 @@ areas = [
     "knowledge",
     "templates",
     "branding",
+    "memory",
 ]
 
 content = [
-    "# Estatísticas\n"
+    "# Estatísticas",
+    ""
 ]
 
 for area in areas:
@@ -25,6 +27,6 @@ for area in areas:
     )
 
 Path("STATS.md").write_text(
-    "\n".join(content) + "\n",
+    "\n".join(content).rstrip() + "\n",
     encoding="utf-8"
 )
