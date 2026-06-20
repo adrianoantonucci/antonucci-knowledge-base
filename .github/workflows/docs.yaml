@@ -1,4 +1,4 @@
-name: Generate Stats
+name: Generate Docs
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  stats:
+  docs:
     runs-on: ubuntu-latest
 
     permissions:
@@ -19,9 +19,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: python scripts/generate-stats.py
+      - name: Generate Indexes
+        run: python scripts/generate-index.py
 
-      - name: Commit Stats
+      - name: Generate Stats
+        run: python scripts/generate-stats.py
+
+      - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: atualiza estatísticas"
+          commit_message: "docs: atualiza arquivos gerados"
