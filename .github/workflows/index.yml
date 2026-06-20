@@ -1,0 +1,27 @@
+name: Generate Indexes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: python scripts/generate-index.py
+
+      - name: Commit Indexes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: atualiza índices"
